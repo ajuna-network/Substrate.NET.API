@@ -57,6 +57,9 @@ namespace Substrate.NetApi.Model.Extrinsics
             // ChargeType
             bytes.AddRange(_charge.Encode());
 
+            // CheckMetadaHash (only disabled supported for now)
+            bytes.AddRange(CheckMetadataHash.EncodeExtra());
+
             return bytes.ToArray();
         }
 
@@ -79,6 +82,9 @@ namespace Substrate.NetApi.Model.Extrinsics
 
             // CheckMortality, Additional Blockhash check. Immortal = genesis_hash, Mortal = logic
             bytes.AddRange(_startEra.Bytes);
+
+            // CheckMetadataHash
+            bytes.AddRange(CheckMetadataHash.EncodeAdditional());
 
             return bytes.ToArray();
         }

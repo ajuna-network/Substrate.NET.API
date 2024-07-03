@@ -89,6 +89,8 @@ namespace Substrate.NetApi.Model.Extrinsics
 
             list.AddRange(Method.Encode());
 
+            list.AddRange(CheckMetadataHash.EncodeExtra());
+
             return Utils.SizePrefixedByteArray(list);
         }
     }

@@ -20,6 +20,8 @@ namespace Substrate.NetApi.Model.Extrinsics
 
         public ChargeType Charge;
 
+        public CheckMetadataHash CheckMetadataHash;
+
         public Method Method;
 
         public byte[] Signature;
@@ -95,6 +97,8 @@ namespace Substrate.NetApi.Model.Extrinsics
                 // chargeAssetTxPayment
                 Charge = chargeType;
                 Charge.Decode(memory.ToArray(), ref p);
+
+                CheckMetadataHash.Decode(memory.ToArray(), ref p);
             }
 
             // method
